@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140926191208) do
     t.string   "filename"
     t.string   "content"
     t.string   "type"
+    t.integer  "maeil_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140926191208) do
   end
 
   create_table "receivers", force: true do |t|
-    t.integer  "maeils_id"
+    t.integer  "maeil_id"
     t.integer  "mailbox_id"
     t.datetime "created_at"
     t.datetime "updated_at"
