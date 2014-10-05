@@ -8,15 +8,15 @@ class Mailbox < ActiveRecord::Base
   # has_and_belongs_to_many :maeils
   before_create :mail_limit
 
-  before_destroy :if_mails_in_inbox?
+  before_destroy :mails_in_inbox?
 
-  delegate :inbox_mails, :spams to: :maeils
+  delegate :inbox_mails, :spams, to: :maeils
 
   def mail_limit
     maeils.count < Max_email_count
   end
 
-  def if_mails_in_inbox?
-    !(self.inbox_mails.count >= 0)
+  def mails_in_inbox?
+    self.inbox_mails.count >= 0
   end
 end

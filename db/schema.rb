@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20140926191208) do
   create_table "maeils", force: true do |t|
     t.integer  "mailbox_id"
     t.integer  "maeil_id"
+    t.integer  "receiver_count"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
