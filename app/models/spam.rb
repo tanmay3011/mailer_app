@@ -1,0 +1,2 @@
+class Spam < Maeil
+end

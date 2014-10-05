@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 20140926191208) do
     t.string   "firstname"
     t.string   "lastname"
     t.integer  "phone_no"
-    t.integer  "friend_id"
+    t.integer  "mailbox_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "friends", force: true do |t|
-    t.integer  "mailbox_id"
+    t.integer  "contact_id"
     t.string   "firstname"
     t.datetime "created_at"
     t.datetime "updated_at"

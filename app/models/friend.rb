@@ -1,4 +1,3 @@
 class Friend < ActiveRecord::Base
-  belongs_to :mailbox
-  has_many :contacts
+  belongs_to :friend
 end

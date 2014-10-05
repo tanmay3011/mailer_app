@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.integer :phone_no
-      t.belongs_to :friend 
+      t.belongs_to :mailbox
       t.timestamps
     end
   end
