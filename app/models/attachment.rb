@@ -1,4 +1,5 @@
 class Attachment < ActiveRecord::Base
+  # FIXME_AK: naming issue.
   belongs_to :maeil
   # belongs_to :avatar, polymorphic: true
 
