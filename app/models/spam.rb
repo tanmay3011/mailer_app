@@ -1,2 +1,2 @@
-class Spam < Maeil
+class Spam < Email
 end

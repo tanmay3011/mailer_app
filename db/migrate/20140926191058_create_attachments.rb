@@ -4,7 +4,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :filename
       t.string :content
       t.string :type
-      t.belongs_to :maeil
+      t.belongs_to :email
       # t.references :avatar, polymorphic: true
       t.timestamps
     end
