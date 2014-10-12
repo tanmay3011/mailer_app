@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926191208) do
+ActiveRecord::Schema.define(version: 20141012152418) do
 
   create_table "attachments", force: true do |t|
     t.string   "filename"
     t.string   "content"
     t.string   "type"
-    t.integer  "maeil_id"
+    t.integer  "email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20140926191208) do
     t.datetime "updated_at"
   end
 
+  create_table "emails", force: true do |t|
+    t.integer  "mailbox_id"
+    t.integer  "email_id"
+    t.integer  "receiver_count"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friends", force: true do |t|
     t.integer  "contact_id"
     t.string   "firstname"
@@ -38,13 +47,11 @@ ActiveRecord::Schema.define(version: 20140926191208) do
     t.datetime "updated_at"
   end
 
-  create_table "maeils", force: true do |t|
+  create_table "logs", force: true do |t|
+    t.text     "entry"
     t.integer  "mailbox_id"
-    t.integer  "maeil_id"
-    t.integer  "receiver_count"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "mailboxes", force: true do |t|
@@ -56,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140926191208) do
   end
 
   create_table "receivers", force: true do |t|
-    t.integer  "maeil_id"
+    t.integer  "email_id"
     t.integer  "mailbox_id"
     t.datetime "created_at"
     t.datetime "updated_at"

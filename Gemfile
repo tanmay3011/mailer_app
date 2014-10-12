@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'rails',                                  '4.1.6'
 gem 'mysql2',                                 '0.3.16'
 gem 'jquery-rails',                           '3.1.2'
-gem 'turbolinks',                             '2.3.0'
 
 group :assets do
   gem 'therubyracer',                         '0.12.1', platforms: :ruby
