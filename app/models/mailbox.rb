@@ -4,38 +4,34 @@ class Mailbox < ActiveRecord::Base
   has_many :sent_emails, class_name: Email
   has_many :received_emails, source: :email, through: :receivers
 
-  has_many :emails, dependent: :destroy
-  has_many :contacts
+  has_many :inbox_emails, class_name: Reciever
+  has_many :received_emails, through: :inbox_emails, source: :email
+  has_many :contacts, dependent: :destroy
   has_many :receivers
   has_many :friends, through: :contacts
+  has_one :log
   #CONSTANT
   # FIXME_AK: What is the purpose of this variable?
-  Max_email_count = 1
-  validate :mail_limit, on: [:update, :create]
 
   # FIXED
   # FIXME_AK: Naming issue.
   before_destroy :normal_mails_not_present?
-  after_update :update_log
+  after_create :create_log
 
   def inbox_mails
-    self.emails.inbox_mails
+    inbox_emails.normal_mails
   end
 
   def spams
-    self.emails.spams
+    inbox_emails.spams
   end
 
   private
-    def mail_limit
-      emails.count < Max_email_count
-    end
-
-    def update_log
-      logs << [" #{ firstname } has received a mail "]
-    end
-
     def normal_mails_not_present?
-      !(self.inbox_mails.count >= 0)
+      !(inbox_mails.count > 0)
+    end
+
+    def create_log
+      log.create
     end
 end
